@@ -1,0 +1,14 @@
+digraph G {
+  rankdir=TB;
+  node [shape=box];
+  
+  A [label="Start"];
+  B [label="Process" shape=ellipse fillcolor="lightblue" style=filled];
+  C [label="Decision" shape=diamond fillcolor="yellow" style=filled];
+  D [label="End" shape=box fillcolor="lightgreen" style=filled];
+  
+  A -> B [label="Begin"];
+  B -> C;
+  C -> D [label="Yes" style=dashed];
+  C -> A [label="No" color="red"];
+}

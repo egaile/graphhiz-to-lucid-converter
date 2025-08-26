@@ -1,0 +1,33 @@
+digraph "Complex Graph with Quotes" {
+  rankdir=LR;
+  bgcolor="#f0f0f0";
+  
+  // Nodes with quoted identifiers and special characters
+  "Node with Spaces" [label="Label with\nLine Break", shape=box, fillcolor=lightblue, style=filled];
+  "node-with-dashes" [label="Dashed Node", shape=ellipse, color=red];
+  "node.with.dots" [label="Dotted Node", shape=diamond, style=dashed];
+  "node_with_underscores" [label="Underscore Node", shape=cylinder];
+  "123numeric" [label="Numeric Start", shape=rect];
+  "special!@#$%chars" [label="Special Characters", shape=hexagon, fillcolor="#ff9900", style=filled];
+  
+  // Complex edge definitions
+  "Node with Spaces" -> "node-with-dashes" [label="Edge Label 1", style=dashed, color=blue];
+  "node-with-dashes" -> "node.with.dots" [label="Edge\nMulti\nLine", style=dotted];
+  "node.with.dots" -> "node_with_underscores" [label="Bold Edge", penwidth=3];
+  "node_with_underscores" -> "123numeric" [arrowhead=diamond, arrowtail=box, dir=both];
+  "123numeric" -> "special!@#$%chars" [label="Final Edge", color="#00ff00", fontsize=16];
+  
+  // Subgraph with quoted name
+  subgraph "cluster_Special Cluster" {
+    label="Cluster with Special Name";
+    style=filled;
+    fillcolor=lightyellow;
+    
+    "cluster node 1" [label="Inside Cluster 1"];
+    "cluster node 2" [label="Inside Cluster 2"];
+    "cluster node 1" -> "cluster node 2";
+  }
+  
+  // Connect to cluster nodes
+  "special!@#$%chars" -> "cluster node 1" [label="To Cluster", style=bold];
+}

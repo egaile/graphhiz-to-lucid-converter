@@ -1,0 +1,20 @@
+digraph G {
+  rankdir=TB;
+  
+  table [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+      <TR><TD>Name</TD><TD>Type</TD></TR>
+      <TR><TD>id</TD><TD>int</TD></TR>
+      <TR><TD>name</TD><TD>string</TD></TR>
+    </TABLE>
+  > shape=none];
+  
+  simple [label="Simple Label"];
+  formatted [label=<
+    <B>Bold Text</B><BR/>
+    <I>Italic Text</I>
+  >];
+  
+  table -> simple;
+  simple -> formatted;
+}

@@ -1,0 +1,21 @@
+digraph TestGraph {
+    rankdir=TB;
+    
+    // This is a C++ style comment
+    A [label="Start Node", shape=box, color=blue]; // inline comment
+    B [label="Process 1", shape=ellipse, color=green];
+    
+    // Multiple line comments
+    // describing the next node
+    C [label="Process 2", shape=ellipse, color=green];
+    D [label="Decision", shape=diamond, color=yellow];
+    E [label="End Node // not a comment", shape=box, color=red]; // but this is
+    
+    // Edge definitions
+    A -> B [label="input"];
+    A -> C [label="parallel"]; // parallel processing
+    B -> D [label="result"];
+    C -> D [label="result"];
+    D -> E [label="yes", color=green];
+    D -> B [label="no", color=red]; // loop back
+}

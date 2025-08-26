@@ -1,0 +1,60 @@
+{
+  "name": "graphviz-lucid-converter",
+  "version": "1.0.0",
+  "description": "Local-first converter for Graphviz DOT files to Lucidchart-compatible formats",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npm run build:cli",
+    "build:cli": "tsup src/cli/index.ts --format cjs,esm --dts --clean --outDir dist/cli",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@dagrejs/graphlib-dot": "^1.0.2",
+    "@hpcc-js/wasm-graphviz": "^1.5.1",
+    "@types/graphlib-dot": "^0.6.4",
+    "fast-glob": "^3.3.2",
+    "jszip": "^3.10.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "xmlbuilder2": "^3.1.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@types/yargs": "^17.0.32",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.0"
+  },
+  "bin": {
+    "gvlc": "./dist/cli/index.js"
+  },
+  "keywords": [
+    "graphviz",
+    "lucidchart",
+    "converter",
+    "dot",
+    "diagram",
+    "visualization"
+  ],
+  "author": "Ed Gaile",
+  "license": "MIT"
+}

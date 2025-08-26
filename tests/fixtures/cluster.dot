@@ -1,0 +1,33 @@
+digraph G {
+  rankdir=LR;
+  
+  subgraph cluster_0 {
+    label="Frontend";
+    style=filled;
+    fillcolor=lightgray;
+    node [style=filled fillcolor=white];
+    
+    UI [label="User Interface"];
+    Router [label="Router"];
+    Store [label="State Store"];
+    
+    UI -> Router;
+    Router -> Store;
+  }
+  
+  subgraph cluster_1 {
+    label="Backend";
+    style=filled;
+    fillcolor=lightblue;
+    node [style=filled fillcolor=white];
+    
+    API [label="API Gateway"];
+    DB [label="Database"];
+    Cache [label="Cache"];
+    
+    API -> DB;
+    API -> Cache;
+  }
+  
+  Store -> API [label="HTTP Request" style=dashed];
+}

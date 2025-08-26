@@ -1,0 +1,18 @@
+digraph G {
+  rankdir=LR;
+  bgcolor="white";
+  
+  node [shape=box fontsize=12 fontname="Arial"];
+  edge [fontsize=10];
+  
+  Input [label="Input Data" fillcolor="#ffcccc" style=filled];
+  Process1 [label="Validate" shape=ellipse];
+  Process2 [label="Transform" shape=ellipse];
+  Process3 [label="Analyze" shape=ellipse];
+  Output [label="Output Result" fillcolor="#ccffcc" style=filled];
+  
+  Input -> Process1 [label="raw"];
+  Process1 -> Process2 [label="valid"];
+  Process2 -> Process3 [label="clean"];
+  Process3 -> Output [label="final"];
+}

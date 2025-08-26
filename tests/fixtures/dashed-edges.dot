@@ -1,0 +1,15 @@
+digraph G {
+  node [shape=box];
+  
+  Client [label="Client App" fillcolor="lightgreen" style=filled];
+  Proxy [label="Proxy Server" shape=ellipse];
+  Server [label="Backend Server" fillcolor="lightblue" style=filled];
+  Database [label="Database" shape=cylinder];
+  
+  Client -> Proxy [label="Request" penwidth=2];
+  Proxy -> Server [label="Forward" style=dashed color="blue"];
+  Server -> Database [label="Query" style=dotted];
+  Database -> Server [label="Result" style=dashed color="green"];
+  Server -> Proxy [label="Response" style=dashed color="blue"];
+  Proxy -> Client [label="Return" penwidth=2];
+}

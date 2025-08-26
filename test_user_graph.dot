@@ -1,0 +1,13 @@
+digraph G {
+    Start_Node [shape=box, style=filled, fillcolor=lightblue, label="Start Node"];
+    input [shape=ellipse, label="Process 1", style=filled, fillcolor=lightgreen];
+    parallel [shape=ellipse, label="Process 2", style=filled, fillcolor=lightgreen];
+    Analysis [shape=diamond, label="Decision", style=filled, fillcolor=yellow];
+    complete [shape=box, label="End\nNode", style=filled, fillcolor=pink];
+    
+    Start_Node -> input;
+    Start_Node -> parallel;
+    input -> Analysis;
+    parallel -> Analysis;
+    Analysis -> complete;
+}
