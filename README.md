@@ -2,6 +2,13 @@
 
 A privacy-first, local converter for transforming Graphviz DOT files into Lucidchart-compatible formats.
 
+## 📚 Documentation
+
+- **[User Guide](docs/USER_GUIDE.md)** - Complete guide with examples and tutorials
+- **[Installation Guide](docs/INSTALL.md)** - Detailed installation and deployment instructions
+- **[Technical Documentation](docs/DOCUMENTATION.md)** - Architecture and development details
+- **[Examples](examples/)** - Sample DOT files to test the converter
+
 ## Features
 
 - **Local Processing**: All conversions happen in your browser/device - no data leaves your machine

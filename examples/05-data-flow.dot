@@ -1,0 +1,76 @@
+digraph DataFlow {
+    // Data processing pipeline
+    rankdir=LR;
+    label="Data Processing Pipeline";
+    bgcolor=white;
+    
+    // Node styles
+    node [fontname="Arial"];
+    edge [fontname="Arial", fontsize=10];
+    
+    // Data sources
+    subgraph cluster_sources {
+        label="Data Sources";
+        style=filled;
+        fillcolor="#e8f4f8";
+        
+        API [shape=box, style=filled, fillcolor="#4a90e2", fontcolor=white, label="REST API"];
+        Database [shape=cylinder, style=filled, fillcolor="#4a90e2", fontcolor=white, label="PostgreSQL"];
+        Files [shape=folder, style=filled, fillcolor="#4a90e2", fontcolor=white, label="CSV Files"];
+    }
+    
+    // Processing stages
+    subgraph cluster_processing {
+        label="Processing";
+        style=filled;
+        fillcolor="#fff3e0";
+        
+        Ingestion [shape=box, style=filled, fillcolor="#ff9800", fontcolor=white, label="Data\nIngestion"];
+        Validation [shape=diamond, style=filled, fillcolor="#ffc107", label="Validate"];
+        Transform [shape=box, style=filled, fillcolor="#ff9800", fontcolor=white, label="Transform\n& Clean"];
+        Enrich [shape=box, style=filled, fillcolor="#ff9800", fontcolor=white, label="Enrich\nData"];
+    }
+    
+    // Analytics
+    subgraph cluster_analytics {
+        label="Analytics";
+        style=filled;
+        fillcolor="#f3e5f5";
+        
+        ML [shape=box, style=filled, fillcolor="#9c27b0", fontcolor=white, label="Machine\nLearning"];
+        Stats [shape=box, style=filled, fillcolor="#9c27b0", fontcolor=white, label="Statistical\nAnalysis"];
+        Aggregate [shape=box, style=filled, fillcolor="#9c27b0", fontcolor=white, label="Aggregation"];
+    }
+    
+    // Output
+    subgraph cluster_output {
+        label="Output";
+        style=filled;
+        fillcolor="#e8f5e9";
+        
+        Dashboard [shape=box, style=filled, fillcolor="#4caf50", fontcolor=white, label="Dashboard"];
+        Reports [shape=note, style=filled, fillcolor="#4caf50", fontcolor=white, label="Reports"];
+        DataLake [shape=cylinder, style=filled, fillcolor="#4caf50", fontcolor=white, label="Data Lake"];
+    }
+    
+    // Data flow connections
+    API -> Ingestion [label="JSON"];
+    Database -> Ingestion [label="SQL"];
+    Files -> Ingestion [label="CSV"];
+    
+    Ingestion -> Validation;
+    Validation -> Transform [label="Valid", color=green];
+    Validation -> Ingestion [label="Invalid", color=red, style=dashed];
+    
+    Transform -> Enrich;
+    Enrich -> ML;
+    Enrich -> Stats;
+    Enrich -> Aggregate;
+    
+    ML -> Dashboard [label="Predictions"];
+    Stats -> Reports [label="Insights"];
+    Aggregate -> DataLake [label="Storage"];
+    
+    // Feedback loop
+    Dashboard -> API [label="Feedback", style=dotted, color=blue];
+}

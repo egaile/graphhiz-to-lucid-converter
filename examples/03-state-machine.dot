@@ -1,0 +1,39 @@
+digraph StateMachine {
+    // State machine for order processing
+    rankdir=TB;
+    label="Order Processing State Machine";
+    
+    // Define states
+    node [shape=ellipse, style=filled];
+    
+    // Initial state
+    Start [shape=point, width=0.3];
+    
+    // States
+    New [fillcolor=lightblue, label="New\nOrder"];
+    Validated [fillcolor=lightgreen, label="Order\nValidated"];
+    Processing [fillcolor=yellow, label="Processing\nPayment"];
+    Paid [fillcolor=lightgreen, label="Payment\nConfirmed"];
+    Shipping [fillcolor=orange, label="Shipping"];
+    Delivered [fillcolor=green, label="Delivered"];
+    Cancelled [fillcolor=red, fontcolor=white, label="Cancelled"];
+    Refunded [fillcolor=gray, label="Refunded"];
+    
+    // Final state
+    End [shape=doublecircle, fillcolor=black, fontcolor=white, label="Complete"];
+    
+    // Transitions
+    Start -> New;
+    New -> Validated [label="validate"];
+    New -> Cancelled [label="cancel", color=red];
+    Validated -> Processing [label="process payment"];
+    Validated -> Cancelled [label="timeout", style=dashed, color=red];
+    Processing -> Paid [label="success", color=green];
+    Processing -> Cancelled [label="failed", color=red];
+    Paid -> Shipping [label="ship"];
+    Shipping -> Delivered [label="deliver"];
+    Delivered -> End [label="confirm"];
+    Delivered -> Refunded [label="return", style=dashed];
+    Cancelled -> End;
+    Refunded -> End;
+}

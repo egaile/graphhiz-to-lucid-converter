@@ -1,0 +1,21 @@
+digraph SimpleFlowchart {
+    // Graph properties
+    rankdir=TB;
+    label="Simple Flowchart Example";
+    
+    // Node definitions
+    Start [shape=ellipse, style=filled, fillcolor=lightgreen, label="Start"];
+    Input [shape=parallelogram, label="Get User Input"];
+    Process [shape=box, label="Process Data"];
+    Decision [shape=diamond, style=filled, fillcolor=yellow, label="Valid?"];
+    Output [shape=parallelogram, label="Display Result"];
+    End [shape=ellipse, style=filled, fillcolor=pink, label="End"];
+    
+    // Edge connections
+    Start -> Input;
+    Input -> Process;
+    Process -> Decision;
+    Decision -> Output [label="Yes", color=green];
+    Decision -> Input [label="No", color=red, style=dashed];
+    Output -> End;
+}

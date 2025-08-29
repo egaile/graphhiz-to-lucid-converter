@@ -1,0 +1,30 @@
+digraph NetworkDiagram {
+    // Layout configuration
+    rankdir=LR;
+    label="Corporate Network Architecture";
+    bgcolor="#f9f9f9";
+    
+    // External network
+    Internet [shape=ellipse, style=filled, fillcolor=lightblue, label="Internet\nCloud"];
+    
+    // Security layer
+    Firewall [shape=box, style=filled, fillcolor=red, fontcolor=white, label="Firewall"];
+    DMZ [shape=box, style=filled, fillcolor=orange, label="DMZ"];
+    
+    // Internal components
+    LoadBalancer [shape=box, label="Load\nBalancer"];
+    WebServer1 [shape=box, style=filled, fillcolor=lightgreen, label="Web\nServer 1"];
+    WebServer2 [shape=box, style=filled, fillcolor=lightgreen, label="Web\nServer 2"];
+    AppServer [shape=cylinder, style=filled, fillcolor=lightyellow, label="Application\nServer"];
+    Database [shape=cylinder, style=filled, fillcolor=lightgray, label="Database\nServer"];
+    
+    // Connections
+    Internet -> Firewall [label="HTTPS", penwidth=2];
+    Firewall -> DMZ;
+    DMZ -> LoadBalancer;
+    LoadBalancer -> WebServer1;
+    LoadBalancer -> WebServer2;
+    WebServer1 -> AppServer [style=dashed];
+    WebServer2 -> AppServer [style=dashed];
+    AppServer -> Database [label="SQL", color=blue];
+}

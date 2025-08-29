@@ -1,0 +1,82 @@
+digraph OrgChart {
+    // Organizational chart with clusters
+    rankdir=TB;
+    label="Company Organizational Structure";
+    
+    // Style for all nodes
+    node [shape=box, style=filled, fillcolor=lightblue];
+    
+    // Executive level
+    CEO [fillcolor=gold, label="CEO\nJohn Smith"];
+    
+    // C-Suite
+    CTO [fillcolor=lightgreen, label="CTO\nJane Doe"];
+    CFO [fillcolor=lightgreen, label="CFO\nBob Johnson"];
+    CMO [fillcolor=lightgreen, label="CMO\nAlice Brown"];
+    
+    // Technology Department
+    subgraph cluster_tech {
+        label="Technology";
+        style=filled;
+        fillcolor=lightyellow;
+        
+        DevManager [label="Dev Manager\nDavid Lee"];
+        QAManager [label="QA Manager\nSarah Wilson"];
+        DevOps [label="DevOps Lead\nMike Chen"];
+        
+        Dev1 [shape=ellipse, fillcolor=white, label="Developer"];
+        Dev2 [shape=ellipse, fillcolor=white, label="Developer"];
+        QA1 [shape=ellipse, fillcolor=white, label="QA Engineer"];
+        QA2 [shape=ellipse, fillcolor=white, label="QA Engineer"];
+    }
+    
+    // Finance Department
+    subgraph cluster_finance {
+        label="Finance";
+        style=filled;
+        fillcolor=lightcyan;
+        
+        Controller [label="Controller\nTom Davis"];
+        Accounting [label="Accounting\nManager"];
+        
+        Acc1 [shape=ellipse, fillcolor=white, label="Accountant"];
+        Acc2 [shape=ellipse, fillcolor=white, label="Accountant"];
+    }
+    
+    // Marketing Department
+    subgraph cluster_marketing {
+        label="Marketing";
+        style=filled;
+        fillcolor=lavender;
+        
+        MarketingDir [label="Marketing\nDirector"];
+        SocialMedia [label="Social Media\nManager"];
+        
+        Market1 [shape=ellipse, fillcolor=white, label="Marketer"];
+        Market2 [shape=ellipse, fillcolor=white, label="Designer"];
+    }
+    
+    // Reporting structure
+    CEO -> CTO;
+    CEO -> CFO;
+    CEO -> CMO;
+    
+    CTO -> DevManager;
+    CTO -> QAManager;
+    CTO -> DevOps;
+    
+    DevManager -> Dev1;
+    DevManager -> Dev2;
+    QAManager -> QA1;
+    QAManager -> QA2;
+    
+    CFO -> Controller;
+    Controller -> Accounting;
+    Accounting -> Acc1;
+    Accounting -> Acc2;
+    
+    CMO -> MarketingDir;
+    MarketingDir -> SocialMedia;
+    SocialMedia -> Market1;
+    SocialMedia -> Market2;
+}
