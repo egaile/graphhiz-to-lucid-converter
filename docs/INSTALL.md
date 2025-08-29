@@ -6,7 +6,7 @@
 
 ```bash
 # Download the latest release
-curl -L https://github.com/YOUR_REPO/releases/latest/download/graphviz-lucid-converter.zip -o converter.zip
+curl -L https://github.com/egaile/graphhiz-to-lucid-converter/releases/latest/download/graphviz-lucid-converter.zip -o converter.zip
 
 # Extract
 unzip converter.zip
@@ -90,7 +90,7 @@ For developers who want to modify or contribute to the project.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/graphviz-lucid-converter.git
+git clone https://github.com/egaile/graphhiz-to-lucid-converter.git
 cd graphviz-lucid-converter
 
 # 2. Install all dependencies (including dev dependencies)

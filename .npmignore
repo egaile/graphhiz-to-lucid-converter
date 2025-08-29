@@ -1,0 +1,54 @@
+# Development files
+src/
+tests/
+*.test.ts
+*.test.js
+
+# Configuration files
+.eslintrc*
+.prettierrc*
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+vitest.config.ts
+postcss.config.js
+tailwind.config.js
+
+# Documentation source
+docs/*.md
+!docs/USER_GUIDE.md
+prd.md
+prompts.md
+guardrails.md
+attributes.md
+CLAUDE.md
+
+# Build files
+*.map
+*.log
+
+# Git files
+.git/
+.gitignore
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test data
+test_*.dot
+tests/
+
+# Scripts (keep only essential)
+scripts/
+!scripts/package.sh
