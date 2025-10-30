@@ -251,7 +251,9 @@ export function exportToDrawIo(graph: NormalizedGraph): string {
     
     // Skip edges if we can't find the nodes
     if (!sourceId || !targetId) {
-      console.warn(`Skipping edge from ${edge.source} to ${edge.target} - nodes not found`);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Skipping edge from ${edge.source} to ${edge.target} - nodes not found`);
+      }
       return;
     }
     

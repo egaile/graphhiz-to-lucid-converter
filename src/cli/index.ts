@@ -108,6 +108,13 @@ async function processFile(
   }
   
   try {
+    // File size limit: 10MB
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
+    const stats = await fs.stat(inputPath);
+    if (stats.size > MAX_FILE_SIZE) {
+      throw new Error(`File too large (${(stats.size / 1024 / 1024).toFixed(1)}MB). Maximum size is 10MB.`);
+    }
+
     const content = await fs.readFile(inputPath, 'utf-8');
     const graph = await parseAndLayoutDot(content);
     

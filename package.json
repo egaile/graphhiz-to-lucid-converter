@@ -16,7 +16,9 @@
   "dependencies": {
     "@dagrejs/graphlib-dot": "^1.0.2",
     "@hpcc-js/wasm-graphviz": "^1.5.1",
+    "@types/dompurify": "^3.0.5",
     "@types/graphlib-dot": "^0.6.4",
+    "dompurify": "^3.3.0",
     "fast-glob": "^3.3.2",
     "jszip": "^3.10.1",
     "react": "^18.2.0",

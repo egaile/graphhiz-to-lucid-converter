@@ -44,9 +44,17 @@ const BatchRunner: React.FC<BatchRunnerProps> = ({
 
   const processFile = async (file: File): Promise<{ result?: Blob | string; error?: string }> => {
     try {
+      // File size limit: 10MB
+      const MAX_FILE_SIZE = 10 * 1024 * 1024;
+      if (file.size > MAX_FILE_SIZE) {
+        return {
+          error: `File too large (${(file.size / 1024 / 1024).toFixed(1)}MB). Maximum size is 10MB.`
+        };
+      }
+
       const content = await file.text();
       const graph = await parseAndLayoutDot(content);
-      
+
       if (exportFormat === 'drawio') {
         const xml = exportToDrawIo(graph);
         return { result: xml };

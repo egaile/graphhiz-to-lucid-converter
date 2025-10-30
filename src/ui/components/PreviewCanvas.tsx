@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Graphviz } from '@hpcc-js/wasm-graphviz';
+import DOMPurify from 'dompurify';
 
 interface PreviewCanvasProps {
   file: File;
@@ -66,9 +67,15 @@ const PreviewCanvas: React.FC<PreviewCanvasProps> = ({ file }) => {
         )}
         
         {svg && !loading && !error && (
-          <div 
+          <div
             className="w-full h-full"
-            dangerouslySetInnerHTML={{ __html: svg }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(svg, {
+                USE_PROFILES: { svg: true, svgFilters: true },
+                FORBID_TAGS: ['script', 'style'],
+                FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover']
+              })
+            }}
           />
         )}
       </div>
